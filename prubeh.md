@@ -8,3 +8,10 @@
 * třída jakožto předpis, jak mají vypadat objekty
 * základy dědičnosti  a `protected`
 * přetěžování metod
+
+# 1,5. cvičení 
+* odpadlo
+
+# 2. cvičení (plán)
+* rozhraní
+* spojový seznam

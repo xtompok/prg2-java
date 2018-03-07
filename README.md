@@ -1,4 +1,9 @@
 # Cvičení z Programování II
+
+## Doporučené zdroje
+* [http://pruvodce.ucw.cz/](Průvodce labyrintem algoritmů) - knížka popisující mnohé základní i pokročilé algoritmy, čtivé, ačkoli poměrně rozsáhlé
+* [https://ksp.mff.cuni.cz/kucharky/](Programátorské kuchařky) - sepsané základy algoritmizace, od úplných základů až po složité algoritmy a datové struktury
+
 ## Zapouzdření
 * atributy při zapouzdření nejsou přístupné přímo, ale přes metody `getX` a `setX`
   - toto je vlastnost Javy, jiné jazyky to umí i bez explicitních metod (např. Python)
@@ -17,3 +22,8 @@
   - pozor, výběr, která metoda se zavolá, je složitý a v různých jazycích se liší
 * přetížené metody je vhodné označit *anotací*  `@Override`, zvyšuje to přehlednost a snižuje potenciál pro budoucí chyby
   - NetBeans obvykle samy nabízí
+
+## Rozhraní
+* slouží k definování chování nějakého objektu při pohledu zvenku
+* objekt implementující dané rozhraní můžeme snadno vyměnit za jiný, který implementuje totéž rozhraní
+* rozhraní samotné neobsahuje výkonný kód, jen popisuje, které metody bude mít objekt toto rozhraní implementující
