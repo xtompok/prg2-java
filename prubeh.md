@@ -12,6 +12,6 @@
 # 1,5. cvičení 
 * odpadlo
 
-# 2. cvičení (plán)
+# 2. cvičení
 * rozhraní
-* spojový seznam
+* spojový seznam - isEmpty, contains, size, add(a), print

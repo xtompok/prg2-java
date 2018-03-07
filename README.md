@@ -1,8 +1,8 @@
 # Cvičení z Programování II
 
 ## Doporučené zdroje
-* [http://pruvodce.ucw.cz/](Průvodce labyrintem algoritmů) - knížka popisující mnohé základní i pokročilé algoritmy, čtivé, ačkoli poměrně rozsáhlé
-* [https://ksp.mff.cuni.cz/kucharky/](Programátorské kuchařky) - sepsané základy algoritmizace, od úplných základů až po složité algoritmy a datové struktury
+* [Průvodce labyrintem algoritmů](http://pruvodce.ucw.cz/) - knížka popisující mnohé základní i pokročilé algoritmy, čtivé, ačkoli poměrně rozsáhlé
+* [Programátorské kuchařky](https://ksp.mff.cuni.cz/kucharky/) - sepsané základy algoritmizace, od úplných základů až po složité algoritmy a datové struktury
 
 ## Zapouzdření
 * atributy při zapouzdření nejsou přístupné přímo, ale přes metody `getX` a `setX`
