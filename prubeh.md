@@ -15,3 +15,11 @@
 # 2. cvičení
 * rozhraní
 * spojový seznam - isEmpty, contains, size, add(a), print
+
+# 2,5. cvičení
+* vedl doc. Bayer
+* grafická primitiva
+
+# 3. cvičení
+* dokončení spojového seznamu
+* dokončení grafických primitiv
