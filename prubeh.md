@@ -22,4 +22,6 @@
 
 # 3. cvičení
 * dokončení spojového seznamu
-* dokončení grafických primitiv
+
+# 3,5. cvičení
+* povede doc. Bayer
