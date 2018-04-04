@@ -25,3 +25,10 @@
 
 # 3,5. cvičení
 * povede doc. Bayer
+
+# 4. cvičení
+* halda
+* rostoucí pole
+
+# 5. cvičení
+* grafika
