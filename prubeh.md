@@ -31,4 +31,11 @@
 * rostoucí pole
 
 # 5. cvičení
-* grafika
+* GUI 
+  - tlačítka, popisky, textová pole
+  - layouty
+  - kreslíme do okna
+
+# 6. cvičení
+* GUI
+  - zpracování událostí z klávesnice a myši
