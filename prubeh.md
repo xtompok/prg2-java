@@ -30,6 +30,14 @@
 * halda
 * rostoucí pole
 
+# ?. přednáška
+* průsečíky úseček
+  - rozsekání čtvercovými sítěmi
+  - algoritmus zametání roviny
+  - prioritní fronta
+* b-stromy
+* [Doporučená literatura](http://pruvodce.ucw.cz/static/pruvodce.pdf), s. 373, 190, 81
+
 # 5. cvičení
 * GUI 
   - tlačítka, popisky, textová pole
