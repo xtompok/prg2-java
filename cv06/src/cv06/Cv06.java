@@ -22,6 +22,14 @@ public class Cv06 {
 	    
 	    }
 	    tree.print();
+	    for (int i=0;i<10;i++){
+		tree.delete(i);	    
+		System.out.println(tree.find(i));
+	    }
+	    tree.print();
+	    tree.insert(4);
+	    tree.print();
+
     }
     
 }
@@ -62,9 +70,98 @@ class RBTree {
 		}
 	}
 
-	boolean delete(int a){}
+	boolean delete(int a){
+		Node node;
+		node = findRef(a);
 
-	boolean find(int a){}
+		if (node.left == null && node.right == null){
+			if (node == node.up.left){
+				node.up.left = null;
+			}
+			if (node == node.up.right){
+				node.up.right = null;
+			}
+			node.up = null;
+			return true;
+		}
+		if (node.left == null){
+			if (node.right.left == null){
+				node.value = node.right.value; 
+				if (node.right.right != null){
+					node.right.right.up = node;
+				}
+				node.right = node.right.right;
+				return;
+			}
+			Node next = findNext(node);
+			if (next.right != null){
+				next.right.up = next.up;
+			}
+			next.up.left = next.right;
+			node.value = next.value;
+			return true;
+		}
+
+		if (node.left.right == null){
+			node.value = node.left.value; 
+			if (node.left.left != null){
+				node.left.left.up = node;
+			}
+			node.left = node.left.left;
+			return;
+		}
+
+		Node next = findPrev(node);
+		if (next.left != null){
+			next.left.up = next.up;
+		}
+		next.up.right = next.left;
+		node.value = next.value;
+		return true;
+	}
+
+	Node findNext(Node n){
+		n = n.right;
+		while (n.left != null){
+			n = n.left;
+		}
+		return n;
+	}
+	
+	Node findPrev(Node n){
+		n = n.left;
+		while (n.right != null){
+			n = n.right;
+		}
+		return n;
+	}
+
+	boolean find(int a){
+		return (findRef(a) != null);
+        }
+
+	Node findRef(int a){
+		if (root == null){
+			return null;	
+		}
+		Node node;
+		node = root;
+
+		while (node != null){
+			if (a > node.value){
+				node = node.right;
+				continue;
+			}
+			if (a == node.value){
+				return node;
+			}
+			if (a < node.value){
+				node = node.left;	
+				continue;
+			}
+		}
+		return null;
+        }
 
 	void print(){
 		System.out.println("Printing tree:");
