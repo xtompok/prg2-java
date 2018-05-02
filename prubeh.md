@@ -1,4 +1,4 @@
-# 1. cvičení
+#1. cvičení
 * principy objektového programování
 * spagetti a lasagne kód
 * princip *data a rozhraní*
@@ -47,3 +47,13 @@
 # 6. cvičení
 * GUI
   - zpracování událostí z klávesnice a myši
+* binární vyhledávací stromy
+
+# 7.cvičení
+* binární vyhledávací stromy
+* teorie červeno-černých stromů
+
+# 8. cvičení
+* objektový návrh
+* kalkulačka? 
+* poloha vozů MHD?
