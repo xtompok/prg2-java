@@ -9,6 +9,7 @@ import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -59,16 +60,17 @@ public class Cv08 {
         private static void createAndShowGUI() {
         JFrame window = new JFrame("Testovaci okno");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setLayout(new FlowLayout());
+        window.setLayout(new BorderLayout(10,10));
         //window.setSize(2000,2000);
         DrawPanel dpanel = new DrawPanel();
         dpanel.addMouseListener(dpanel);
         dpanel.addMouseMotionListener(dpanel);
         dpanel.addKeyListener(dpanel);
+        dpanel.setPreferredSize(new Dimension(500,500));
         dpanel.setFocusable(true);
-        window.add(dpanel);
+        window.add(dpanel,BorderLayout.CENTER);
         ControlPanel cpanel = new ControlPanel(dpanel);
-        window.add(cpanel);
+        window.add(cpanel,BorderLayout.LINE_END);
         window.pack();
         window.setVisible(true);
     }  

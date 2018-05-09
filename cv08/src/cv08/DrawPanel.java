@@ -49,35 +49,15 @@ class DrawPanel extends JPanel
         drawing = false;
         lines = new LinkedList<>();
         vehicles = new LinkedList<>();
-        //vehicles = Data.getActualData().vehicles;
-        SwingWorker worker = new SwingWorker<Data,Data>(){
-        protected Data doInBackground(){
-            Data data;
-            data = Data.getActualData();
-            return data;  
-        }
-        
-        public void done(){
-         
-            try {
-                Data data;
-                data = get();
-                vehicles = data.vehicles;
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Cv08.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ExecutionException ex) {
-                Logger.getLogger(Cv08.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    };
-        worker.run();
+        SwingWorker worker = new DownloadTask();
+        worker.execute();
         
     }
     
-    @Override
+    /*@Override
     public Dimension getPreferredSize(){
         return new Dimension(500, 500);
-    }
+    }*/
     
     private int getX(double lon){
         return (int)((lon-16.55)*(this.getWidth()/0.06));
@@ -196,5 +176,36 @@ class DrawPanel extends JPanel
     public void keyReleased(KeyEvent e) {
     }
     
+    private class DownloadTask extends SwingWorker<Data, Data>{
+
+        @Override
+        protected Data doInBackground() throws Exception {
+            while (true){
+                publish(Data.getActualData());
+                System.out.println("Got data");
+                Thread.sleep(5*1000);
+            }
+        }
+    
+        @Override
+        public void done(){
+         
+            try {
+                Data data;
+                data = get();
+                vehicles = data.vehicles;
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Cv08.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ExecutionException ex) {
+                Logger.getLogger(Cv08.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        @Override
+        protected void process(List<Data> data){
+            vehicles = data.get(data.size()-1).vehicles;
+            DrawPanel.this.repaint();
+        }
+    }
 
 }
