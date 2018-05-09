@@ -8,6 +8,7 @@ package cv08;
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonObject;
 import com.eclipsesource.json.JsonValue;
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -16,8 +17,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 
 /**
  *
@@ -67,6 +72,7 @@ public class Cv08 {
         window.pack();
         window.setVisible(true);
     }  
+      
     
 }
 

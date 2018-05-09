@@ -17,8 +17,12 @@ import java.awt.event.MouseMotionListener;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.SwingWorker;
 
 /**
  *
@@ -35,12 +39,39 @@ class DrawPanel extends JPanel
     int ksx;
     int ksy;
     List<int[]> lines;
+    List<Vehicle> vehicles;
+
+    
     
     public DrawPanel(){
         setBorder(BorderFactory.createLineBorder(Color.black));
         setBackground(Color.red);
         drawing = false;
         lines = new LinkedList<>();
+        vehicles = new LinkedList<>();
+        //vehicles = Data.getActualData().vehicles;
+        SwingWorker worker = new SwingWorker<Data,Data>(){
+        protected Data doInBackground(){
+            Data data;
+            data = Data.getActualData();
+            return data;  
+        }
+        
+        public void done(){
+         
+            try {
+                Data data;
+                data = get();
+                vehicles = data.vehicles;
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Cv08.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ExecutionException ex) {
+                Logger.getLogger(Cv08.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    };
+        worker.run();
+        
     }
     
     @Override
@@ -48,18 +79,23 @@ class DrawPanel extends JPanel
         return new Dimension(500, 500);
     }
     
+    private int getX(double lon){
+        return (int)((lon-16.55)*(this.getWidth()/0.06));
+    }
+    
+    private int getY(double lat){
+        return (int)(this.getHeight()-(lat-49.16)*(this.getHeight()/0.11));
+    }
+    
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setColor(Color.yellow);
-        Random rand = new Random();
-        for (int i=0;i<count;i++){  
-            g2d.fillArc(rand.nextInt(500), rand.nextInt(500), 10, 10, 0, 360);
+        for (Vehicle v: vehicles){
+            g2d.fillArc(getX(v.lon), getY(v.lat), 10, 10, 0, 360);
         }
-        for (int [] line : lines){
-            g2d.drawLine(line[0], line[1], line[2], line[3]);
-        }
+        
         g2d.dispose();
     }
 
@@ -159,5 +195,6 @@ class DrawPanel extends JPanel
     @Override
     public void keyReleased(KeyEvent e) {
     }
+    
 
 }

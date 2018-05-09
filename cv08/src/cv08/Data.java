@@ -5,7 +5,11 @@
  */
 package cv08;
 
+import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonObject;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,6 +21,20 @@ public class Data {
     String lastUpdate;
     int updateInterval;
     List<Vehicle> vehicles;
+    public static Data getActualData(){
+        JsonObject jdata;
+        jdata = null;
+        try {
+            URL addr = new URL("http://iris.bmhd.cz/api/data.json");
+            BufferedReader instream = new BufferedReader(new InputStreamReader(addr.openStream()));
+            jdata = Json.parse(instream).asObject();
+            System.out.println(jdata.get("UpdateInterval").asInt());
+        } catch (Exception e){
+            
+            System.err.println("Chyba!"+e.getLocalizedMessage());
+        }
+        return new Data(jdata);
+    }
     
     public Data(JsonObject d){
         this.lastUpdate = d.getString("LastUpdate", "");

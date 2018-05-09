@@ -178,7 +178,13 @@ class RBTree {
 	}
 }
 
+
+
 class Node {
+	public static final boolean RED = true;
+	public static final boolean BLACK = false;
+
+	boolean color;
 	int value;
 	Node up;
 	Node left;
